@@ -8,26 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var messageString = "Namaste"
+    @State private var messageString = ""
     
     var body: some View {
         
         
         VStack {
-                Spacer()
-            Image(systemName: "speaker.wave.2", variableValue: 0.550)
-                .resizable()
-                .scaledToFit()
-                .symbolRenderingMode(.multicolor)
-                .padding()
-                .background(Color(hue: 0.508, saturation: 0.253, brightness: 0.963))
-                .cornerRadius(30)
-                .shadow( color: .gray, radius: 30, x:20, y:20)
-                .overlay(RoundedRectangle(cornerRadius: 30)
-                    .stroke(.teal, lineWidth: 1)
-                )
-                
-                .padding()
+            Spacer()
+            
             Text(messageString)
                 .font(.largeTitle)
                 .fontWeight(.heavy)
@@ -36,30 +24,30 @@ struct ContentView: View {
                 .foregroundColor(.red)
                 .frame( height: 150)
                 .frame(maxWidth: .infinity)
-          //      .border(.orange, width: 1)
+            //      .border(.orange, width: 1)
                 .padding()
             
             Spacer()
             
             
-            HStack {
-                
-                Button("Awesome") {
-                    // this is the action when button is press
-                    messageString = "You are Awesome!"
+    
+                Button("Show Message") {
+                    let message1 = "You Are Awesome!"
+                    let message2 = "You Are Great!"
+                    if messageString == "" {
+                        messageString = message1
+                    }
+                    else if messageString == message2 {
+                        
+                        messageString = message1
+                    }
+                    else {
+                        messageString = message2
+                    }
+                    
                 }
                 .buttonStyle(.borderedProminent)
-                .padding(20)
-                Spacer()
                 
-                Button("Great") {
-                    // this is the action when button is press
-                    messageString = "You are Great!"
-                }
-                .buttonStyle(.borderedProminent)
-                .padding(20)
-            }
-            .border(.purple, width: 1)
         }
     }
 }
