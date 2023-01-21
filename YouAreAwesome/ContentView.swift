@@ -48,18 +48,9 @@ struct ContentView: View {
                                 "Fabulous, That's You",
                                 "You make me Smile",
                                 "When the Genius Bar Needs help, They call You"]
-                
-                messageString = messages[messageNumber]
-                
-                messageNumber += 1
-                if messageNumber > messages.count - 1 { messageNumber = 0}
-                
-                imageName = "image\(imageNumber)"
-                
-                imageNumber += 1
-                if imageNumber > 9 { imageNumber = 0}
-                
-         //       imageNumber = Int.random(in: 0...9)
+  
+                messageString = messages[Int.random(in: 0...messages.count - 1)]
+                imageName = "image\(Int.random(in: 0...9))"
                
             }
                 .buttonStyle(.borderedProminent)
