@@ -18,14 +18,6 @@ struct ContentView: View {
         
         VStack {
             
-            Image(imageName)
-                .resizable()
-                .scaledToFit()
-                .cornerRadius(30)
-                .shadow(radius: 30)
-                .padding()
-            Spacer()
-            
             Text(messageString)
                 .font(.largeTitle)
                 .fontWeight(.heavy)
@@ -37,24 +29,46 @@ struct ContentView: View {
             //      .border(.orange, width: 1)
                 .padding()
             
+            
+            Image(imageName)
+                .resizable()
+                .scaledToFit()
+                .cornerRadius(30)
+                .shadow(radius: 30)
+                .padding()
+            
             Spacer()
             
             
-    
+            
             Button("Show Image") {
-                var messages = ["You Are Great!",
+                let lastImageNumber = imageNumber
+                let lastMessageNumber = messageNumber
+                
+                let message = ["You Are Great!",
                                 "You Are Awesome!",
                                 "You are Fantaastic",
                                 "Fabulous, That's You",
                                 "You make me Smile",
                                 "When the Genius Bar Needs help, They call You"]
-  
-                messageString = messages[Int.random(in: 0...messages.count - 1)]
-                imageName = "image\(Int.random(in: 0...9))"
-               
-            }
-                .buttonStyle(.borderedProminent)
                 
+                
+                repeat {
+                    messageNumber = Int.random(in: 0...message.count - 1)
+                } while messageNumber == lastMessageNumber
+                
+                repeat {
+                    imageNumber = Int.random(in: 0...9)
+                }while imageNumber == lastImageNumber
+                
+                
+                messageString = message[messageNumber]
+                
+                imageName = "image\(imageNumber)"
+                
+            }
+            .buttonStyle(.borderedProminent)
+            
         }
     }
 }
